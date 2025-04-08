@@ -1,0 +1,23 @@
+
+Programming Language : Python - 3.8 or higher
+
+Libraries:
+
+pandas
+
+numpy
+
+catboost
+
+tpot
+
+scikit-learn
+
+matplotlib
+
+seaborn
+
+joblib or pickle
+
+streamlit
+
