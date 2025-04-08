@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/eccb15858b.js" crossorigin="anonymous"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&display=swap" rel="stylesheet">
+     <style>
+        .header{
+            position:relative;
+            right:4px;
+            bottom: 17px;
+            width:99.5vw;
+            height:10vh;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .footer{
+            background-color: #7b2cbf;
+            height:fit-content;
+            position: sticky;
+            width:100%;
+            left:0px;
+            right:0px;
+            bottom: 0px;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            display: flex;
+            justify-content: right;
+            display: none;
+        }
+        #footerBtn{
+            padding:10px 15px;
+            background-color: white;
+            color:black;
+            margin:10px;
+            border-style: none;
+            border-radius: 5px;
+        }
+        .about{
+            background-color:rgb(4, 73, 4);
+            height:fit-content;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 100px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            display: none;
+            animation-name: opac;
+            animation-duration: 3s;
+        }
+        .about p{
+            color:white;
+            font-size: 35px;
+            text-align: center;
+        }
+        .reason{
+            height: fit-content;
+            margin-right: 30px;
+            margin-left: 30px;
+            border-radius: 23px;
+            background-color: rgb(1, 42, 1);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .reason div{
+            width: 230px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            color:black;
+            text-align: center;
+            border-radius: 15px;
+        }
+        .reason div i{
+            color:white;
+            background-color: rgb(2, 101, 2);
+            font-size: 25px;
+            padding:10px;
+        }
+        .reason div p{
+            font-size: 15px;
+            text-align: center;
+            color:black;
+            line-height: 1.9;
+        }
+        .reasonItem{
+            background-color: white;
+            padding: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .description a{
+            text-decoration: none;
+        }
+        #scrollHeader{
+            text-align: center;
+            position: relative;
+            top:10px;
+        }
+        #scrollHeaderLine{
+            position: relative;
+            top:7px;
+            margin-left: 40%;
+            margin-right: 40%;
+        }
+        .offer{
+            background-color: rgb(2, 74, 2);
+            width:99.5vw;
+            position:relative;
+            right:4px;
+            bottom:13px;
+        }
+        #offertxt{
+            color:white;
+            text-align: center;
+        }
+        #hscroll{
+            display: none;
+            animation-name: opac;
+            animation-duration: 3s;
+        }
+        #Logo{
+            display: none;
+        }
+        .projectHeader{
+            text-align: center;
+        }
+        .projectHeader #line{
+            position: relative;
+            bottom:50px;
+            display: none;
+            animation-name: size;
+            animation-duration: 2s;
+        }
+        #hrline{
+            margin-left: 50px;
+            margin-right: 50px;
+            display: none;
+            animation-name: opac;
+            animation-duration: 3s;
+        }
+        #line{
+            height: 40px;
+            width: 200px;
+            position: relative;
+            bottom:13px;
+            display: none;
+            animation-name: size;
+            animation-duration: 2s;
+        }
+        #contactBtn{
+            padding:15px 35px;
+            background-color: rgb(3, 89, 3);
+            color:white;
+            font-size: 16px;
+            margin-top: 10px;
+            border-style: none;
+            border-radius: 5px;
+            display:none;
+            animation-name: size;
+            animation-duration: 2s;
+        }
+        .content{
+            height:fit-content;
+            width:100%;
+            background-color: rgb(255, 252, 252);
+            position: relative;
+            bottom:50px;
+        }
+        #navbar{
+            overflow: hidden;
+            list-style-type: none;
+        }
+        #navbar li{
+            float:left;
+            margin: 50px;
+            margin-top: 0px;
+        }
+        #navbar li a{
+            text-decoration: none;
+            color:#7b2cbf;
+        }
+        #navbar li:nth-child(2) a:hover{
+            border-style:solid;
+            border-color: #7b2cbf;
+            border-top:none;
+            border-left:none;
+            border-right: none;
+            border-width: 2px;
+            padding-bottom:5px;
+        }
+        #navbar li:nth-child(3) a:hover{
+            border-style:solid;
+            border-color: #7b2cbf;
+            border-top:none;
+            border-left:none;
+            border-right: none;
+            border-width: 2px;
+            padding-bottom:5px;
+            
+        }
+        #navbar li:nth-child(1){
+            font-size:35px;
+            font: weight 20px;
+            margin-left:0px;
+            position: relative;
+            top:12px;
+            
+        }
+        #navbar li:nth-child(2){
+            float:right;
+            margin-right:25px;
+            font-size:20px;
+            position: relative;
+            top:16px;
+        }
+        #navbar li:nth-child(3){
+            float:right;
+            margin-right:0px;
+            font-size:20px;
+            position: relative;
+            top:16px;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content:center;
+            justify-content: space-around;
+        }
+        .description{
+            width:550px; 
+        }
+        #descriptionImg{
+            border-radius: 25px;
+            animation-name: opacscale;
+            animation-duration: 5s;
+            margin-top: 50px;
+        }
+        #descriptionImg2{
+            border-radius: 25px;
+            animation-name: opacscale;
+            animation-duration: 5s;
+            margin-left:5px;
+            margin-top: 50px;
+        }
+        #descriptionHeader{
+            font-size: 50px;
+            line-height: 1.7;
+        }
+        #descriptionSubHeader{
+            font-size: 18px;
+            line-height: 1.7;
+            margin-top: -30px;
+            color:rgb(80, 73, 73);
+        }
+        mark{
+            background-color: white;
+            color:#7b2cbf;
+        }
+        #logo1{
+            width:150px;
+            margin-top: -7px;
+            margin-left: -25px;
+        }
+        .projectSection{
+            margin-top: 50px;
+        }
+        #projectSectionHeader{
+            font-size: 40px;
+            text-align: center;
+            line-height: 2;
+            color:black;
+        }
+        #projectSectionSubHeader{
+            font-size: 18px;
+            line-height: 2;
+            text-align: center;
+            margin-right: 70px;
+            margin-left: 70px;
+            color:rgb(80, 73, 73);
+            position: relative;
+            bottom:30px;
+        }
+        .slider{
+            height: 100px;
+            margin: auto;
+            overflow: hidden;
+            width: auto;
+            margin-top: 100px;
+        }
+        .slider .slide-track{
+            animation: scroll 40s linear infinite;
+            display: flex;
+            width:calc(250px * 14);
+        }
+        .slider .slide{
+            height: 100px;
+            width:250px;
+            
+        }
+        .slidecontent{
+            width:fit-content;
+            background-color: rgb(32, 31, 31);
+            color:white;
+            padding-top:10px;
+            padding-bottom: 10px;
+            padding-right:5px;
+            padding-left:5px;
+            border-radius: 10px;
+        }
+        i{
+            color:rgb(8, 141, 1);
+            padding:5px 5px;
+            border-style:none;
+            border-radius:40px;
+        }
+        .slide span{
+            font-size: 20px;
+            position: relative;
+            bottom:10px;
+            left:5px;
+        }
+
+
+        .slider2{
+            height: 100px;
+            margin: auto;
+            overflow: hidden;
+            width: auto;
+            margin-top: 100px;
+        }
+        .slider2 .slide-track2{
+            animation: scroll2 40s linear infinite;
+            display: flex;
+            width:calc(250px * 14);
+        }
+        .slider2 .slide2{
+            height: 100px;
+            width:250px;
+        }
+        .slidecontent2{
+            width:fit-content;
+            background-color: rgb(32, 31, 31);
+            color:white;
+            padding-top:10px;
+            padding-bottom: 10px;
+            padding-right:5px;
+            padding-left:5px;
+            border-radius: 10px;
+        }
+
+        .slide2 span{
+            font-size: 20px;
+            position: relative;
+            bottom:10px;
+            left:5px;
+        }
+        .courses{
+            height:max-content;
+            background-color: rgb(1, 61, 1);
+            position: relative;
+            top:50px;
+            text-align: center;
+        }
+        #boxSectionHeader{
+            background-color: white;
+            text-align: center;
+            position: relative;
+            top: 50px;
+            padding:20px;
+            margin-left:50px;
+            margin-right: 50px;
+        }
+
+        #boxSectionHeader{
+            font-size: 23px;
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
+        .container1{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            justify-content: center;
+            position: relative;
+            top:50px;
+        }
+        .container1 .card{
+            width: fit-content;
+            margin:50px;
+        }
+        .card i{
+            color:white;
+            font-size:28px;
+        }
+        .card p{
+            font-size:18px;
+            font-family: 'Nanum Gothic Coding', monospace;
+            color:white;
+        }
+
+        .image img{
+            width:250px;
+            height: 400px;
+        }
+
+        #encrypt_btn{
+            background-color: #7b2cbf;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 5px;
+            border-style: none;
+            display: none;
+        }
+
+        @media screen and (max-width:1300px){
+            
+            .container{
+                margin-top: 90px;
+            }
+            #logo1{
+                width:110px;
+                height:40px;
+                margin-top: -6px;
+                margin-left: -35px;
+            }
+            #Logo{
+                display: inline;
+                font-size:55px;
+                color:#7b2cbf;
+            }
+            .image{
+                display: none;
+            }
+            .description{
+                text-align: center;
+                width:fit-content;
+            }
+            #navbar li:nth-child(1){
+                font-size:25px;
+                margin-left:0px; 
+            }
+            #navbar li:nth-child(2){
+                font-size:15px;
+                margin-right:17px; 
+                margin-top:10px;
+            }
+            #navbar li:nth-child(3){
+                font-size:17px;
+                margin-right:0px; 
+                margin-top:10px;
+            }
+            #descriptionHeader{
+                font-size: 30px;
+                line-height: 1.7;
+                margin-right: 50px;
+                margin-left: 50px;
+            }
+            #descriptionSubHeader{
+                font-size: 18px;
+                line-height: 1.7;
+                margin-top: 0px;
+                padding-left:15px;
+                padding-right: 15px;
+            }
+            #projectSectionHeader{
+                font-size: 22px;
+                line-height: 2;
+                padding: 25px;
+            }
+            #boxSectionHeader{
+                font-size: 22px;
+            }
+            #contactBtn{
+                padding:15px 25px;
+                background-color: rgb(3, 89, 3);
+                color:white;
+                font-size: 13px;
+                margin-top: 15px;
+                border-style: none;
+                border-radius: 5px;
+                display: none;
+                animation-name: size;
+                animation-duration: 2s;
+            }
+            .slider .slide{
+                height: 100px;
+                width:190px;
+            }
+            .slider2 .slide2{
+                height: 100px;
+                width:190px;
+            }
+            #projectSectionSubHeader{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+        @media screen and (max-width:700px){
+            .reasonItem{
+                background-color: white;
+                padding: 15px;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            .about p{
+                font-size: 21px;
+            }
+            .reasonItem .reasonSubHeader{
+                font-size: 13px;
+            }
+            .about{
+                margin-top: 0px;
+            }
+            #scrollHeader{
+                font-size: 14px;
+            }
+            #offertxt{
+                font-size:13px;
+            }
+            .container{
+                margin-top: 90px;
+            }
+            #logo1{
+                width:110px;
+                height:40px;
+                margin-top: -6px;
+                margin-left: -35px;
+            }
+            #Logo{
+                display: inline;
+                font-size: 40px;
+                color:#7b2cbf;
+            }
+            .image{
+                display: none;
+            }
+            .description{
+                text-align: center;
+            }
+            #navbar li:nth-child(1){
+                font-size:25px;
+                margin-left:-28px; 
+                margin-top: 10px;
+            }
+            #navbar li:nth-child(2){
+                font-size:13px;
+                margin-right:20px; 
+                margin-top:17px;
+            }
+            #navbar li:nth-child(3){
+                font-size:13px;
+                margin-right:0px; 
+                margin-top:17px;
+            }
+            #descriptionHeader{
+                font-size: 22px;
+                line-height: 1.7;
+            }
+            #descriptionSubHeader{
+                font-size: 13px;
+                line-height: 1.7;
+                margin-top: 0px;
+            }
+            #projectSectionSubHeader{
+                font-size: 13px;
+            }
+            #boxSectionHeader{
+                font-size: 15px;
+            }
+            #contactBtn{
+                padding:15px 25px;
+                background-color: rgb(3, 89, 3);
+                color:white;
+                font-size: 13px;
+                margin-top: 15px;
+                border-style: none;
+                border-radius: 5px;
+                display: none;
+                animation-name: size;
+                animation-duration: 2s;
+            }
+            .fa-brands{
+                font-size:18px;
+            }
+            .fa-solid{
+                font-size:18px;
+            }
+            .slider .slide{
+                height: 100px;
+                width:150px; 
+            }
+            .slider2 .slide2{
+                height: 100px;
+                width:150px; 
+            }
+            .slide span{
+                font-size: 13px;
+                position: relative;
+                bottom:2px;
+            }
+            .slide2 span{
+                font-size: 13px;
+                position: relative;
+                bottom:2px;
+            }
+            .slider2{
+                position: relative;
+                bottom:80px;
+            }
+            .card p{
+                font-size: 15px;
+            }
+            .card i{
+                font-size: 18px;
+            }
+            .container1 .card{
+                width: 70px;
+                margin:50px;
+            }
+        }
+        @keyframes scroll {
+            0%{
+                transform: translateX(0);
+            }
+            50%{
+                transform: translateX(calc(-250px * 4));
+            }
+        }
+        @keyframes scroll2 {
+            0%{
+                transform: translateX(calc(-250px * 4));
+            }
+            50%{
+                transform: translateX(0);
+            }
+            75%{
+                transform: translateX(calc(-250px * 4));
+            }
+        }
+        @keyframes size{
+            0%{
+                transform: scale(0,0);
+            }
+            100%{
+                transform: scale(1,1);
+            }
+        }
+        @keyframes opac{
+            0%{
+                opacity:0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        @keyframes opacscale{
+            0%{
+                opacity:0;
+                transform: scale(0,0);
+            }
+            100%{
+                opacity: 1;
+                transform: scale(1,1);
+            }
+        }
+     </style>
+     <title>AI Imge Enhancer</title>
+</head>
+<body>
+     <div class="offer">
+          <p id="offertxt"></p>
+     </div>
+     <div class="header">
+          <ul id="navbar">
+               <li><a href="/">AI Enhancer</a></li>
+               <li><a href="/encrypt_redirect">Image Enhancer</a></li>
+               <li><a href="/text_redirect">Text Enhancer</a></li>
+          </ul>
+     </div>
+     <br><br><br>
+     <div class="content">
+          <div class="container">
+               <div class="description">
+                    <p id="Logo"></p>
+                    <p id="header"></p>
+                    <p id="descriptionHeader"></p>
+                    <p id="descriptionSubHeader"></p>
+                    <br>
+                    <a href="/encrypt_redirect"><button id="encrypt_btn">Start Enhancing</button></a>
+               </div>
+               <div class="image">
+                    <img src="https://img.freepik.com/free-photo/young-person-intership_23-2149315632.jpg?t=st=1713009724~exp=1713013324~hmac=3269d2d31af83a0db5411ad645f36f69cff489fb51cca4a963adc42c1a8e20ca&w=360" alt="ImageFile" id="descriptionImg">
+                    <img src="https://img.freepik.com/free-photo/young-person-intership_23-2149315593.jpg?t=st=1713009749~exp=1713013349~hmac=77564147d04b894791fa813d533a5ab3cabc69f16eae0fe1df076843266d2b31&w=360" alt="ImageFile" id="descriptionImg2">
+               </div>
+          </div>
+     </div>
+     <script>
+        
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        function ctrlShiftKey(e, keyCode) {
+        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+
+        document.onkeydown = (e) => {
+        // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+        if (
+            event.keyCode === 123 ||
+            ctrlShiftKey(e, 'I') ||
+            ctrlShiftKey(e, 'J') ||
+            ctrlShiftKey(e, 'C') ||
+            (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+        )
+            return false;
+        };
+
+
+        function descriptionHeader(){
+        let dhi = 0;
+        let dhtxt = 'Looking for a great image enhancing mechanism?';
+        let dhtxtArr =dhtxt.split(""); 
+        let dhspeed = 50;
+        let dhtemp=" ";
+        function descriptionHeaderWrite(){
+            if (dhi < dhtxt.length) {
+            document.getElementById("descriptionHeader").innerText = dhtemp + dhtxtArr[dhi]+ "|";
+            dhtemp = dhtemp + dhtxtArr[dhi];
+            dhi++;
+            setTimeout(descriptionHeaderWrite, dhspeed);
+            }else{
+            document.getElementById("descriptionHeader").innerHTML = 'Looking for a great <mark>image enhancing mechanism?</mark>';
+            descriptionSubHeader()
+            }
+        }
+        descriptionHeaderWrite();
+        }
+
+        function descriptionSubHeader(){
+        let dshi = 0;
+        let dshtxt = `Then don't worry buddy you are in a correct place. Upload your low quality dim image and get it enhanced to the top most level. Our mechanism is powered by advanced computational techniques.`;
+        let dshtxtArr =dshtxt.split(""); 
+        let dshspeed = 40;
+        let dshtemp=" ";
+        function descriptionSubHeaderWrite(){
+            if (dshi < dshtxt.length) {
+            document.getElementById("descriptionSubHeader").innerText = dshtemp + dshtxtArr[dshi]+ "|";
+            dshtemp = dshtemp + dshtxtArr[dshi];
+            dshi++;
+            setTimeout(descriptionSubHeaderWrite, dshspeed);
+            }else{
+            document.getElementById("encrypt_btn").style.display="inline";
+            projectSectionHeader();
+            }
+        }
+        descriptionSubHeaderWrite()
+        }
+        descriptionHeader()
+     </script>
+</body>
+</html>

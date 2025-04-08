@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processed Image</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Uploaded Image and Extracted Text</h2>
+    <img src="{{ url_for('static', filename=image_url.split('/')[-1]) }}" alt="Uploaded Image" style="max-width: 500px; display: block; margin: 20px auto;">
+    <h3>Extracted and Corrected Text:</h3>
+    <pre>{{ extracted_text }}</pre>
+    <br>
+    <a href="{{ url_for('upload_form') }}">Upload Another Image</a>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/eccb15858b.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i');
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none!important;
+            text-decoration: none!important;
+            box-sizing: border-box;
+            line-height: initial;
+            letter-spacing: initial;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .content{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        a {
+            color: #3F51B5;
+        }
+
+        a:hover {
+            color: #333333;
+        }
+
+        body {
+            background-color: #f1f1f1;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        button.log-out-client {
+            height: 45px;
+            border: 0;
+            padding-right: 20px;
+            border-radius: 4px;
+            background-color: #3F51B5;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 43px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+        }
+
+        button.log-out-client i {
+            width: 45px;
+            line-height: 45px;
+            height: 45px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin-right: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        button.log-out-client:hover, button.log-out-client.cancel:hover {
+            background-color: #333;
+        }
+
+        #editor {
+            width: 800px;
+            margin: 50px auto 50px auto;
+            padding: 7px 20px 20px 20px;
+            border: 1px solid #464646;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+
+        #toolbar {
+            margin-left: -20px;
+            margin-right: -20px;
+            border-bottom: 1px solid #464646;
+            padding: 8px 20px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        #page {
+            padding-top: 30px;
+            min-height: 600px;
+            outline: none;
+        }
+
+        .icon {
+            float: left;
+            height: 30px;
+            width: 40px;
+            margin-right: 10px;
+            background: #fafafa;
+            font-size: 0.8rem;
+            color: #464646;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .icon:hover {
+            border-color: #3e7086;
+            color: #3e7086;
+        }
+
+        div#editor {
+            width: 100%;
+            height: 400px;
+            margin: 0;
+            margin-bottom: 20px;
+            padding: 0;
+            border: 1px solid #cfcfcf;
+            border-radius: 4px;
+        }
+
+        #page * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #page {
+            min-height: initial;
+            height: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            padding: 10px;
+            padding-top: 63px;
+            margin-top: -53px;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        section#toolbar {
+            height: 53px;
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px solid #cfcfcf;
+            background-color: #fff;
+            overflow: hidden;
+            border-radius: 4px 4px 0px 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .icon {
+            height: 33px;
+            background: transparent;
+            opacity: 0.7;
+            color: #555;
+            width: 33px;
+            line-height: 33px;
+        }
+
+        .icon:hover {
+            opacity: 1;
+            color: #3F51B5;
+        }
+
+        ul, ol {
+            padding-left: 28px;
+            color: #777;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .cont {
+            width: 600px;
+            max-width: 96%;
+            margin: auto;
+        }
+
+        #header{
+            width: 600px;
+        }
+
+        #header{
+            position: relative;
+            top: 30%;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        
+        #description_content{
+            font-size: 34px;
+            line-height: 2;
+
+        }
+        mark{
+            text-decoration: none;
+            background-color: whitesmoke;
+            color:#3F51B5;
+        }
+
+        #enhance_btn{
+            position: relative;
+            top: 2%;
+        }
+
+        #home{
+            position: relative;
+            left:20px;
+            top:20px;
+            font-size: 20px;
+        }
+
+        .content{
+            position: relative;
+            right:1%;
+            bottom: 45px;
+        }
+
+        .content img{
+            width:500px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="home">
+        <a href="/">Home</a>
+    </div>
+
+
+
+
+    <div class="content">
+        <div id="header">
+            <!-- Display the uploaded image here -->
+        <img src="https://firebasestorage.googleapis.com/v0/b/digitalsignature-af550.appspot.com/o/text_enhancer.png?alt=media&token=476284ff-7362-4f00-bb7c-c8bed475277a" alt="">
+        <p id="description_content"><mark>Type</mark> or <mark>paste</mark> your text content right here to get <mark>enhanced<mark></p>
+            <button id="enhance_btn" class="log-out-client" onclick="enhance_content();">
+                <i class="fa fa-save"></i>
+                <span>Enhance</span>
+            </button>
+        </div>
+        <div class="cont">
+            <div id="editor" contenteditable="false">
+                <section id="toolbar">
+                    <div id="bold" class="icon fa fa-bold"></div>
+                    <div id="italic" class="icon fa fa-italic"></div>
+                    <div id="createLink" class="icon fa fa-link"></div>
+                    <div id="insertUnorderedList" class="icon fa fa-list"></div>
+                    <div id="insertOrderedList" class="icon fa fa-list-ol"></div>
+                    <div id="justifyLeft" class="icon fa fa-align-left"></div>
+                    <div id="justifyRight" class="icon fa fa-align-right"></div>
+                    <div id="justifyCenter" class="icon fa fa-align-center"></div>
+                    <div id="justifyFull" class="icon fa fa-align-justify"></div>
+                </section>
+        
+                <div id="page" contenteditable="true">
+                    <p id="page-content"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+            function getValue(){
+                let text = document.getElementById("page").innerText ;
+                console.log(`The given text is ${text}`)
+
+                fetch('/correct_text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Corrected Text: ", data.corrected_text);
+                    document.getElementById("page").innerText = data.corrected_text;
+                })
+                .catch(error => console.error('Error:', error));
+                }
+
+            function enhance_content()
+            {
+                let text = document.getElementById("page").innerText ;
+                console.log(`The given text is ${text}`)
+
+                fetch('/enhance_text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Enhanced Text: ", data.enhanced_text);
+                document.getElementById("page").innerText = data.enhanced_text;
+            })
+            .catch(error => console.error('Error:', error));
+            }
+
+
+            // setInterval(getValue,30000);
+
+
+        var ghostEditor = {
+            bindEvents: function() {
+                this.bindDesignModeToggle();
+                this.bindToolbarButtons();
+            },
+
+            bindDesignModeToggle: function() {
+                $('#page-content').on('click', function(e) {
+                document.designMode = 'on';
+                });
+
+                $('#page-content').on('click', function(e) {
+                var $target = $(e.target);
+
+                if ($target.is('#page-content')) {
+                    document.designMode = 'off';
+                }
+                });
+            },
+
+            bindToolbarButtons: function() {
+                $('#toolbar').on('mousedown', '.icon', function(e) {
+                e.preventDefault();
+                var btnId = $(e.target).attr('id');
+                this.editStyle(btnId);
+                }.bind(this));
+            },
+
+            editStyle: function(btnId) {
+                var value = null;
+
+                if (btnId === 'createLink') {
+                if (this.isSelection()) value = prompt('Enter a link:');
+                }
+
+                document.execCommand(btnId, true, value);
+            },
+
+            isSelection: function() {
+                var selection = window.getSelection();
+                return selection.anchorOffset !== selection.focusOffset
+            },
+
+            init: function() {
+                this.bindEvents();
+            },
+            }
+
+            ghostEditor.init();
+
+            function getContent() {
+                var content = document.getElementById('page').innerHTML;
+                alert(content);
+            }
+
+
+
+
+    </script>
+</body>
+</html>

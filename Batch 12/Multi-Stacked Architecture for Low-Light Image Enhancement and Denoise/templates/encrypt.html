@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #7b2cbf;
+        }
+        #image_compare{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        #image_compare div{
+            width: 300px;
+            height: 300px;
+            display: none;
+        }
+        .img1{
+            margin-left: 50px;
+        }
+        .img2{
+            margin-right: 50px;
+        }
+        .form-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #7b2cbf;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .upload-files-container {
+            background-color: #f7fff7;
+            width: 420px;
+            padding: 30px 60px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
+        }
+        .drag-file-area {
+            border: 2px dashed #7b2cbf;
+            border-radius: 40px;
+            margin: 10px 0 15px;
+            padding: 30px 50px;
+            width: 350px;
+            text-align: center;
+        }
+        .drag-file-area .upload-icon {
+            font-size: 50px;
+        }
+        .drag-file-area h3 {
+            font-size: 26px;
+            margin: 15px 0;
+        }
+        .drag-file-area label {
+            font-size: 19px;
+        }
+        .drag-file-area label .browse-files-text {
+            color: #7b2cbf;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+        .browse-files span {
+            position: relative;
+            top: -25px;
+        }
+        .default-file-input {
+            opacity: 0;
+        }
+        .cannot-upload-message {
+            background-color: #ffc6c4;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            padding: 5px 10px 5px 30px;
+            border-radius: 5px;
+            color: #BB0000;
+            display: none;
+        }
+        @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+        .cannot-upload-message span, .upload-button-icon {
+            padding-right: 10px;
+        }
+        .cannot-upload-message span:last-child {
+            padding-left: 20px;
+            cursor: pointer;
+        }
+        .file-block {
+            color: #f7fff7;
+            background-color: #7b2cbf;
+            transition: all 1s;
+            width: 390px;
+            position: relative;
+            display: none;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0 15px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        .header{
+            position:relative;
+            right:4px;
+            bottom:20px;
+            width:99.5vw;
+            height:10vh;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+.footer{
+    background-color: #7b2cbf;
+    height:fit-content;
+    position: sticky;
+    width:100%;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+    justify-content: right;
+    display: none;
+}
+#footerBtn{
+    padding:10px 15px;
+    background-color: white;
+    color:black;
+    margin:10px;
+    border-style: none;
+    border-radius: 5px;
+}
+.about{
+    background-color:rgb(4, 73, 4);
+    height:fit-content;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 100px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: none;
+    animation-name: opac;
+    animation-duration: 3s;
+}
+.about p{
+    color:white;
+    font-size: 35px;
+    text-align: center;
+}
+.reason{
+    height: fit-content;
+    margin-right: 30px;
+    margin-left: 30px;
+    border-radius: 23px;
+    background-color: rgb(1, 42, 1);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.reason div{
+    width: 230px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color:black;
+    text-align: center;
+    border-radius: 15px;
+}
+.reason div i{
+    color:white;
+    background-color: rgb(2, 101, 2);
+    font-size: 25px;
+    padding:10px;
+}
+.reason div p{
+    font-size: 15px;
+    text-align: center;
+    color:black;
+    line-height: 1.9;
+}
+.reasonItem{
+    background-color: white;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.description a{
+    text-decoration: none;
+}
+#scrollHeader{
+    text-align: center;
+    position: relative;
+    top:10px;
+}
+#scrollHeaderLine{
+    position: relative;
+    top:7px;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+.offer{
+    background-color: rgb(2, 74, 2);
+    width:99.5vw;
+    position:relative;
+    right:4px;
+    bottom:13px;
+}
+#offertxt{
+    color:white;
+    text-align: center;
+}
+#hscroll{
+    display: none;
+    animation-name: opac;
+    animation-duration: 3s;
+}
+#Logo{
+    display: none;
+}
+.projectHeader{
+    text-align: center;
+}
+.projectHeader #line{
+    position: relative;
+    bottom:50px;
+    display: none;
+    animation-name: size;
+    animation-duration: 2s;
+}
+#hrline{
+    margin-left: 50px;
+    margin-right: 50px;
+    display: none;
+    animation-name: opac;
+    animation-duration: 3s;
+}
+#line{
+    height: 40px;
+    width: 200px;
+    position: relative;
+    bottom:13px;
+    display: none;
+    animation-name: size;
+    animation-duration: 2s;
+}
+#contactBtn{
+    padding:15px 35px;
+    background-color: rgb(3, 89, 3);
+    color:white;
+    font-size: 16px;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 5px;
+    display:none;
+    animation-name: size;
+    animation-duration: 2s;
+}
+.content{
+    height:fit-content;
+    width:100%;
+    background-color: rgb(255, 252, 252);
+    position: relative;
+    bottom:50px;
+}
+#navbar{
+    overflow: hidden;
+    list-style-type: none;
+}
+#navbar li{
+    float:left;
+    margin: 50px;
+    margin-top: 0px;
+}
+#navbar li a{
+    text-decoration: none;
+    color:#7b2cbf;
+}
+#navbar li:nth-child(2) a:hover{
+    border-style:solid;
+    border-color: #7b2cbf;
+    border-top:none;
+    border-left:none;
+    border-right: none;
+    border-width: 2px;
+    padding-bottom:5px;
+}
+#navbar li:nth-child(3) a:hover{
+    border-style:solid;
+    border-color: #7b2cbf;
+    border-top:none;
+    border-left:none;
+    border-right: none;
+    border-width: 2px;
+    padding-bottom:5px;
+    
+}
+#navbar li:nth-child(1){
+    font-size:35px;
+    font: weight 20px;
+    margin-left:0px;
+    position: relative;
+    top:12px;
+    
+}
+#navbar li:nth-child(2){
+    float:right;
+    margin-right:25px;
+    font-size:20px;
+    position: relative;
+    top:16px;
+}
+#navbar li:nth-child(3){
+    float:right;
+    margin-right:0px;
+    font-size:20px;
+    position: relative;
+    top:16px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    justify-content: space-around;
+}
+.description{
+    width:550px; 
+}
+#descriptionImg{
+    border-radius: 25px;
+    animation-name: opacscale;
+    animation-duration: 5s;
+    margin-top: 50px;
+}
+#descriptionImg2{
+    border-radius: 25px;
+    animation-name: opacscale;
+    animation-duration: 5s;
+    margin-left:5px;
+    margin-top: 50px;
+}
+#descriptionHeader{
+    font-size: 50px;
+    line-height: 1.7;
+}
+#descriptionSubHeader{
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: -30px;
+    color:rgb(80, 73, 73);
+}
+mark{
+    background-color: white;
+    color:#7b2cbf;
+}
+#logo1{
+    width:150px;
+    margin-top: -7px;
+    margin-left: -25px;
+}
+.projectSection{
+    margin-top: 50px;
+}
+#projectSectionHeader{
+    font-size: 40px;
+    text-align: center;
+    line-height: 2;
+    color:black;
+}
+#projectSectionSubHeader{
+    font-size: 18px;
+    line-height: 2;
+    text-align: center;
+    margin-right: 70px;
+    margin-left: 70px;
+    color:rgb(80, 73, 73);
+    position: relative;
+    bottom:30px;
+}
+.slider{
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    width: auto;
+    margin-top: 100px;
+}
+.slider .slide-track{
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width:calc(250px * 14);
+}
+.slider .slide{
+    height: 100px;
+    width:250px;
+    
+}
+.slidecontent{
+    width:fit-content;
+    background-color: rgb(32, 31, 31);
+    color:white;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius: 10px;
+}
+i{
+    color:rgb(8, 141, 1);
+    padding:5px 5px;
+    border-style:none;
+    border-radius:40px;
+}
+.slide span{
+    font-size: 20px;
+    position: relative;
+    bottom:10px;
+    left:5px;
+}
+
+
+.slider2{
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    width: auto;
+    margin-top: 100px;
+}
+.slider2 .slide-track2{
+    animation: scroll2 40s linear infinite;
+    display: flex;
+    width:calc(250px * 14);
+}
+.slider2 .slide2{
+    height: 100px;
+    width:250px;
+}
+.slidecontent2{
+    width:fit-content;
+    background-color: rgb(32, 31, 31);
+    color:white;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius: 10px;
+}
+
+.slide2 span{
+    font-size: 20px;
+    position: relative;
+    bottom:10px;
+    left:5px;
+}
+.courses{
+    height:max-content;
+    background-color: rgb(1, 61, 1);
+    position: relative;
+    top:50px;
+    text-align: center;
+}
+#boxSectionHeader{
+    background-color: white;
+    text-align: center;
+    position: relative;
+    top: 50px;
+    padding:20px;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+#boxSectionHeader{
+    font-size: 23px;
+    font-family: 'Nanum Gothic Coding', monospace;
+}
+.container1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-content: center;
+    position: relative;
+    top:50px;
+}
+.container1 .card{
+    width: fit-content;
+    margin:50px;
+}
+.card i{
+    color:white;
+    font-size:28px;
+}
+.card p{
+    font-size:18px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    color:white;
+}
+
+.image img{
+    width:250px;
+    height: 400px;
+}
+
+#encrypt_btn{
+    background-color: #7b2cbf;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 5px;
+    border-style: none;
+    display: none;
+}
+
+@media screen and (max-width:1300px){
+    
+    .container{
+        margin-top: 90px;
+    }
+    #logo1{
+        width:110px;
+        height:40px;
+        margin-top: -6px;
+        margin-left: -35px;
+    }
+    #Logo{
+        display: inline;
+        font-size:55px;
+        color:#7b2cbf;
+    }
+    .image{
+        display: none;
+    }
+    .description{
+        text-align: center;
+        width:fit-content;
+    }
+    #navbar li:nth-child(1){
+        font-size:25px;
+        margin-left:0px; 
+    }
+    #navbar li:nth-child(2){
+        font-size:15px;
+        margin-right:17px; 
+        margin-top:10px;
+    }
+    #navbar li:nth-child(3){
+        font-size:17px;
+        margin-right:0px; 
+        margin-top:10px;
+    }
+    #descriptionHeader{
+        font-size: 30px;
+        line-height: 1.7;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+    #descriptionSubHeader{
+        font-size: 18px;
+        line-height: 1.7;
+        margin-top: 0px;
+        padding-left:15px;
+        padding-right: 15px;
+    }
+    #projectSectionHeader{
+        font-size: 22px;
+        line-height: 2;
+        padding: 25px;
+    }
+    #boxSectionHeader{
+        font-size: 22px;
+    }
+    #contactBtn{
+        padding:15px 25px;
+        background-color: rgb(3, 89, 3);
+        color:white;
+        font-size: 13px;
+        margin-top: 15px;
+        border-style: none;
+        border-radius: 5px;
+        display: none;
+        animation-name: size;
+        animation-duration: 2s;
+    }
+    .slider .slide{
+        height: 100px;
+        width:190px;
+    }
+    .slider2 .slide2{
+        height: 100px;
+        width:190px;
+    }
+    #projectSectionSubHeader{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+@media screen and (max-width:700px){
+    .reasonItem{
+        background-color: white;
+        padding: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .about p{
+        font-size: 21px;
+    }
+    .reasonItem .reasonSubHeader{
+        font-size: 13px;
+    }
+    .about{
+        margin-top: 0px;
+    }
+    #scrollHeader{
+        font-size: 14px;
+    }
+    #offertxt{
+        font-size:13px;
+    }
+    .container{
+        margin-top: 90px;
+    }
+    #logo1{
+        width:110px;
+        height:40px;
+        margin-top: -6px;
+        margin-left: -35px;
+    }
+    #Logo{
+        display: inline;
+        font-size: 40px;
+        color:#7b2cbf;
+    }
+    .image{
+        display: none;
+    }
+    .description{
+        text-align: center;
+    }
+    #navbar li:nth-child(1){
+        font-size:25px;
+        margin-left:-28px; 
+        margin-top: 10px;
+    }
+    #navbar li:nth-child(2){
+        font-size:13px;
+        margin-right:20px; 
+        margin-top:17px;
+    }
+    #navbar li:nth-child(3){
+        font-size:13px;
+        margin-right:0px; 
+        margin-top:17px;
+    }
+    #descriptionHeader{
+        font-size: 22px;
+        line-height: 1.7;
+    }
+    #descriptionSubHeader{
+        font-size: 13px;
+        line-height: 1.7;
+        margin-top: 0px;
+    }
+    #projectSectionSubHeader{
+        font-size: 13px;
+    }
+    #boxSectionHeader{
+        font-size: 15px;
+    }
+    #contactBtn{
+        padding:15px 25px;
+        background-color: rgb(3, 89, 3);
+        color:white;
+        font-size: 13px;
+        margin-top: 15px;
+        border-style: none;
+        border-radius: 5px;
+        display: none;
+        animation-name: size;
+        animation-duration: 2s;
+    }
+    .fa-brands{
+        font-size:18px;
+    }
+    .fa-solid{
+        font-size:18px;
+    }
+    .slider .slide{
+        height: 100px;
+        width:150px; 
+    }
+    .slider2 .slide2{
+        height: 100px;
+        width:150px; 
+    }
+    .slide span{
+        font-size: 13px;
+        position: relative;
+        bottom:2px;
+    }
+    .slide2 span{
+        font-size: 13px;
+        position: relative;
+        bottom:2px;
+    }
+    .slider2{
+        position: relative;
+        bottom:80px;
+    }
+    .card p{
+        font-size: 15px;
+    }
+    .card i{
+        font-size: 18px;
+    }
+    .container1 .card{
+        width: 70px;
+        margin:50px;
+    }
+}
+@keyframes scroll {
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(calc(-250px * 4));
+    }
+}
+@keyframes scroll2 {
+    0%{
+        transform: translateX(calc(-250px * 4));
+    }
+    50%{
+        transform: translateX(0);
+    }
+    75%{
+        transform: translateX(calc(-250px * 4));
+    }
+}
+@keyframes size{
+    0%{
+        transform: scale(0,0);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+@keyframes opac{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes opacscale{
+    0%{
+        opacity:0;
+        transform: scale(0,0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1,1);
+    }
+}
+        .file-icon {
+            margin-right: 10px;
+        }
+        .file-name, .file-size {
+            padding: 0 3px;
+        }
+        .remove-file-icon {
+            cursor: pointer;
+        }
+        .progress-bar {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            left: 4.5%;
+            width: 0;
+            height: 5px;
+            border-radius: 25px;
+            background-color: #4BB543;
+        }
+        .upload-button {
+            font-family: 'Montserrat';
+            background-color: #7b2cbf;
+            color: #f7fff7;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            border: none;
+            border-radius: 20px;
+            margin: 10px;
+            padding: 7.5px 50px;
+            cursor: pointer;
+        }
+        mark{
+            background-color: #7b2cbf;
+            color: white;
+        }
+        #header{
+            width: 550px;
+            font-size: 50px;
+            padding-right: 180px;
+            padding-bottom: 80px;
+        }
+        .upload-files-container{
+            margin-bottom: 80px;
+        }
+
+        #compare_text{
+            text-align: center;
+            font-size: 22px;
+            display: none;
+        }
+    </style>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <ul id="navbar">
+             <li><a href="/">AI Enhancer</a></li>
+             <li><a href="/encrypt">Re-Enhance</a></li>
+        </ul>
+   </div>
+    <form class="form-container" enctype='multipart/form-data' action="/upload" method="POST">
+        <div id="header">
+                <!-- Display the uploaded image here -->
+           <p id="description_content"><mark>Drag</mark> or <mark>browse</mark> your image and get uploaded right here to get <mark>enhanced<mark></p>
+        </div>
+        <div class="upload-files-container">
+            <div class="drag-file-area">
+                <div id="image-display" style="display:none;">
+                    <h2 id="uploaded_image_text">Uploaded Image:</h2>
+                    <img id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 100%; max-height: 400px;">
+                </div>
+                <span id="uploaded_icon" class="material-icons-outlined upload-icon"> file_upload </span>
+                <h3 id="uploaded_text" class="dynamic-message"> Drag & drop any file here </h3>
+                <label class="label"> or <span class="browse-files"> <input type="file" class="default-file-input"/> <span class="browse-files-text">browse file</span> <span>from device</span> </span> </label>
+            </div>
+            <span class="cannot-upload-message"> <span class="material-icons-outlined">error</span> Please select a file first <span class="material-icons-outlined cancel-alert-button">cancel</span> </span>
+            <div class="file-block">
+                <div class="file-info"> <span class="material-icons-outlined file-icon">description</span> <span class="file-name"> </span> | <span class="file-size">  </span> </div>
+                <span id="delete_file_icon" class="material-icons remove-file-icon">delete</span>
+                <div class="progress-bar"> </div>
+            </div>
+            <button type="button" class="upload-button" id="upload_btn"> Enhance </button>
+        </div>
+    </form>
+
+    <h4 id="compare_text"></h4>
+    <br><br>
+    <div id="image_compare">
+        <div id="div1" >
+            <img id="img1" src="" alt=""><br>
+            <h1>Original Image</h1>
+            <br>
+        </div>
+        <div id="div2">
+            <img id="img2" src="" alt=""><br>
+            <h1>Enhanced Image</h1>
+            <br>
+        </div>
+
+    </div>
+    <br><br><br>
+    
+    <script>
+        var ImageURL = "";
+        let img1URL = ""
+        let img2URL = ""
+        var isAdvancedUpload = function() {
+        var div = document.createElement('div');
+        return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+        }();
+
+        let filecontents = ''
+        let draggableFileArea = document.querySelector(".drag-file-area");
+        let browseFileText = document.querySelector(".browse-files");
+        let uploadIcon = document.querySelector(".upload-icon");
+        let dragDropText = document.querySelector(".dynamic-message");
+        let fileInput = document.querySelector(".default-file-input");
+        let cannotUploadMessage = document.querySelector(".cannot-upload-message");
+        let cancelAlertButton = document.querySelector(".cancel-alert-button");
+        let uploadedFile = document.querySelector(".file-block");
+        let fileName = document.querySelector(".file-name");
+        let fileSize = document.querySelector(".file-size");
+        let progressBar = document.querySelector(".progress-bar");
+        let removeFileButton = document.querySelector(".remove-file-icon");
+        let uploadButton = document.querySelector(".upload-button");
+        let delete_file = document.getElementById("delete_file_icon");
+        let fileFlag = 0;
+
+        fileInput.addEventListener("click", () => {
+            fileInput.value = '';
+            console.log(fileInput.value);
+        });
+
+        delete_file.addEventListener('click',()=>{
+            location.replace('/encrypt');
+        })
+
+        
+
+        fileInput.addEventListener("change", e => {
+            console.log(" > " + fileInput.value)
+            uploadIcon.innerHTML = 'check_circle';
+            dragDropText.innerHTML = 'File Dropped Successfully!';
+            document.querySelector(".label").innerHTML = `or <span class="browse-files"> <input type="file" class="default-file-input"/> <span class="browse-files-text">browse file</span> <span>from device</span> </span>`;
+            uploadButton.innerHTML = `Enhance`;
+            fileName.innerHTML = fileInput.files[0].name;
+            fileSize.innerHTML = (fileInput.files[0].size/1024).toFixed(1) + " KB";
+            uploadedFile.style.cssText = "display: flex;";
+            progressBar.style.width = 0;
+            fileFlag = 0;
+        });
+
+        function enhance() {
+            console.log(`Enhancing image: ${ImageURL}`);
+
+            fetch('/enhance', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ image_path: ImageURL }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.enhanced_image_url) {
+                    displayUploadedImage(data.enhanced_image_url);
+                    document.getElementById('uploaded_icon').style.display = "None";
+                    document.getElementById("uploaded_text").style.display = "None";
+                    document.getElementById("uploaded_image_text").textContent = "Enhanced Image";
+                    document.querySelector(".label").innerHTML = "Enhancing Completed!!"
+                    descriptionHeader("I hope the image is denoised and enhanced well. You may check the downloaded copy too..")
+                    location.replace('/download');
+                    document.getElementById("img2").style.display = "inline"
+                    let image2 = document.getElementById("img2");
+                    image2.src = data.enhanced_image_url
+                    document.getElementById("img1").style.display = "inline"
+                    let image1 = document.getElementById("img1");
+                    image1.src = img1URL
+                    document.getElementById('compare_text').style.display="inline"
+                    document.getElementById('div1').style.display="inline"
+                    document.getElementById('div2').style.display="inline"
+                    document.getElementById('compare_text').innerHTML= `<h3 style="font-family: Arial, sans-serif; font-size: 1.5em; font-weight: bold; color: black; text-align: center; margin-bottom: 20px;">
+    COMPARISON OF IMAGES BEFORE AND AFTER ENHANCING
+</h3>`
+                } else {
+                    console.error('Error:', data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+
+            descriptionHeader("Enhancing your image this may take few seconds. Please wait")
+
+        }
+
+
+        uploadButton.addEventListener("click", () => {
+            let isFileUploaded = fileInput.value;
+            if(isFileUploaded != '') {
+                if (fileFlag == 0) {
+                    fileFlag = 1;
+                    var width = 0;
+                    var id = setInterval(frame, 50);
+                    function frame() {
+                        if (width >= 390) {
+                            clearInterval(id);
+                            uploadButton.innerHTML = `<span class="material-icons-outlined upload-button-icon"> check_circle </span> Completed`;
+                            setTimeout(()=>{
+                                document.querySelector(".label").innerHTML = "Enhancing..."
+                                uploadButton.style.display = 'None'
+                                enhance() 
+                            },)
+                        } else {
+                            width += 5;
+                            progressBar.style.width = width + "px";
+                        }
+                    }
+                }
+            } else {
+                cannotUploadMessage.style.cssText = "display: flex; animation: fadeIn linear 1.5s;";
+            }
+        });
+
+        
+
+        // Handle file upload and display the image after upload
+        function displayUploadedImage(uploaded_image_url) {
+            console.log(uploaded_image_url);
+            const imageDisplayDiv = document.getElementById('image-display');
+            const uploadedImageElement = document.getElementById('uploaded-image');
+            uploadedImageElement.src = uploaded_image_url;
+            imageDisplayDiv.style.display = 'block';
+        }
+
+        // Handling the file input change
+        fileInput.addEventListener("change", (e) => {
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+        
+            fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                const uploadedImageUrl = data.uploaded_image_url;
+                console.log(`Image is uploading ${uploadedImageUrl}`)
+                ImageURL = uploadedImageUrl;
+                displayUploadedImage(uploadedImageUrl);
+                img1URL = uploadedImageUrl
+                // document.getElementById("img1").style.display = "inline"
+                // let image1 = document.getElementById("img1");
+                // image1.src = uploadedImageUrl
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function descriptionHeader(textContent){
+        let dhi = 0;
+        let dhtxt = textContent;
+        let dhtxtArr =dhtxt.split(""); 
+        let dhspeed = 50;
+        let dhtemp=" ";
+        function descriptionHeaderWrite(){
+            if (dhi < dhtxt.length) {
+            document.getElementById("description_content").innerText = dhtemp + dhtxtArr[dhi]+ "|";
+            dhtemp = dhtemp + dhtxtArr[dhi];
+            dhi++;
+            setTimeout(descriptionHeaderWrite, dhspeed);
+            }else{
+            document.getElementById("description_content").innerHTML = textContent;
+            }
+        }
+        descriptionHeaderWrite();
+        }
+
+        descriptionHeader("Drag or browse your image and get uploaded right here to get enhanced")
+
+    </script>
+</body>
+</html>
