@@ -1,0 +1,9 @@
+adversarial-robustness-toolbox==1.18.1
+matplotlib==3.9.3
+pandas==2.2.3
+pybase64==1.4.0
+pycryptodome==3.21.0
+scipy==1.14.1
+streamlit==1.40.2
+tensorflow==2.15.0
+tqdm==4.67.1
