@@ -1,0 +1,6 @@
+1. Open Terminal
+2. write "cd vrr/Scripts", then click enter
+3. "./activate"
+4. "cd .."
+5. "cd .."
+6. "streamlit run app.py"
