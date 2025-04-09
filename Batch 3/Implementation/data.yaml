@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 10
+names: ['bike', 'bike_bike_accident', 'bike_object_accident', 'bike_person_accident', 'car', 'car_bike_accident', 'car_car_accident', 'car_object_accident', 'car_person_accident', 'person']
+
+roboflow:
+  workspace: deteccion-h92uo
+  project: deteccion_accidentes
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/deteccion-h92uo/deteccion_accidentes/dataset/2
