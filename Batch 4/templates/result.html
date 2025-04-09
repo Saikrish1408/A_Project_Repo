@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Optimized Route</title>
+</head>
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+    <div class="bg-white shadow-md rounded p-8 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">Optimized Route</h2>
+        <p class="mb-2">Distance: {{ distance }} km</p>
+        <p class="mb-4">Duration: {{ duration }} mins</p>
+        <iframe src="{{ map_path }}" class="w-full h-64"></iframe>
+        <a href="/" class="block mt-4 text-blue-500">Start Over</a>
+    </div>
+</body>
+</html>

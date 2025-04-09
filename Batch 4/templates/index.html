@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Route Optimization</title>
+</head>
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+    <div class="bg-white shadow-md rounded p-8 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">Optimize Your Route</h2>
+        <form action="/optimize" method="post" class="space-y-4">
+            <div>
+                <label for="source" class="block font-medium">Source Location (Lat, Lon):</label>
+                <input
+                    type="text"
+                    id="source"
+                    name="source"
+                    class="border w-full rounded p-2"
+                    placeholder="11.9342, 79.8083"
+                    required
+                />
+            </div>
+            <div>
+                <label for="destination" class="block font-medium">Destination Location (Lat, Lon):</label>
+                <input
+                    type="text"
+                    id="destination"
+                    name="destination"
+                    class="border w-full rounded p-2"
+                    placeholder="11.9230, 79.8300"
+                    required
+                />
+            </div>
+            <div class="space-y-2">
+                <label class="block font-medium">Preferences:</label>
+                <div>
+                    <input type="checkbox" id="avoid_highways" name="avoid_highways" />
+                    <label for="avoid_highways">Avoid Highways</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="avoid_tollways" name="avoid_tollways" />
+                    <label for="avoid_tollways">Avoid Tollways</label>
+                </div>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white w-full p-2 rounded">Optimize</button>
+        </form>
+    </div>
+</body>
+</html>
